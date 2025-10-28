@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Navbar from "./component/HomeComponents/NavBar";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
@@ -10,11 +15,14 @@ import Pricing from "./pages/Pricing";
 import Careers from "./pages/Careers";
 import Post from "./pages/Post";
 import CaseStudiesPage from "./pages/CaseStudiesPage";
-import Process from './pages/Process'
+import Process from "./pages/Process";
+import ServiceDetail from "./pages/ServiceDetail";
+import { AnimatePresence } from "framer-motion";
+import CaseStudyDetail from "./pages/CaseStudyDetail";
+
 const AnimatedRoutes = () => {
   const location = useLocation();
 
-const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
@@ -22,9 +30,10 @@ const AnimatedRoutes = () => {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<Post />} />
         <Route path="/features" element={<Features />} />
-    <Route path="/services/:serviceId" element={<ServiceDetail />} />
+        <Route path="/services/:serviceId" element={<ServiceDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/case-studies" element={<CaseStudiesPage />} />
+        <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
 
         <Route path="/contact" element={<Contact />} />
         <Route path="/careers" element={<Careers />} />
